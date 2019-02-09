@@ -1,12 +1,64 @@
-.ProductRowContainer{
-    width:300px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-gap: 10px;
+.square{
+    background-color: cadetblue;
+    height: 60px;
+    width: 60px;
+    transition: all 0.2s;
+    text-align: center;
 }
-.ProductNameStocked{
-    color: black;
+.square:hover{
+    background-color: cadetblue;
+    height: 60px;
+    width: 150px;
+    transition: all 0.2s;
 }
-.ProductNameNotStocked{
-    color: red;
+.squareClicked{
+    background-color: rgb(96, 130, 131);
+    height: 60px;
+    width: 150px;
+    transition: all 0.2s;
+}
+
+.squareContainer{
+    height: 60px;
+    width: 300px;
+    padding: 10px; 
+}
+
+.messageContainer{
+    display: flexbox;
+    width: fit-content; 
+    height: fit-content;
+    min-width: 50px;
+    max-width: 300px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    background-color: rgb(93, 179, 255);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.messageContainer:hover{
+    border: 1px solid rgb(139, 129, 129);
+}
+
+.messageText{
+    margin: auto;
+    color: rgb(234, 245, 255);
+    word-wrap: break-word;
+}
+
+.messageTime{
+    color: rgb(234, 245, 255);
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    padding: 2px;
+    
+}
+
+.messageList{
+    width:fit-content;
+    height: fit-content;
+    border: 1px solid black;
+    padding: 3px;
 }

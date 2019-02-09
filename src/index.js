@@ -1,87 +1,85 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-const data = [
+class Square extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { clicked: false };
+  }
+
+  handleClick() {
+    this.setState({ clicked: !this.state.clicked });
+    setTimeout(() => {
+      this.setState({ clicked: !this.state.clicked });
+    }, 500);
+  }
+
+  render() {
+    return (
+      <div className="squareContainer">
+        <div
+          className={this.state.clicked ? "squareClicked" : "square"}
+          style={{verticalAlign:'middle',display:'flex'}}
+          onClick={() => this.handleClick()}
+        >
+          <div style={{margin:'auto',color:'white'}}>{this.props.text}</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+class Message extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      text:this.props.text,
+      time: this.props.time
+     }
+  }
+  render() { 
+    return ( 
+      <div className="messageContainer">
+        <div className="messageText"><span>{this.state.text}</span></div>
+        <div className="messageTime">{this.state.time}</div>
+      </div>
+     );
+  }
+}
+ 
+const messages =[
   {
-    category: "Sporting Goods",
-    price: "$49.99",
-    stocked: true,
-    name: "Football"
+    text:"Hi, how are you? Bla bla? Bla bla bla",
+    time: "12:52"
   },
   {
-    category: "Sporting Goods",
-    price: "$9.99",
-    stocked: true,
-    name: "Baseball"
+    text:"Call me later",
+    time: "12:53"
   },
   {
-    category: "Sporting Goods",
-    price: "$29.99",
-    stocked: false,
-    name: "Basketball"
-  },
-  {
-    category: "Electronics",
-    price: "$99.99",
-    stocked: true,
-    name: "iPod Touch"
-  },
-  {
-    category: "Electronics",
-    price: "$399.99",
-    stocked: false,
-    name: "iPhone 5"
-  },
-  { category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7" }
+    text:"Fine, bye!",
+    time: "12:54"
+  }
 ];
 
-class ProductRow extends React.Component {
+class MessageList extends Component {
   render() {
-    return (
-      <div className="ProductRowContainer">
-        <div
-          className={
-            this.props.stocked ? "ProductNameStocked" : "ProductNameNotStocked"
-          }
-        >
-          {this.props.name}
-        </div>
-        <div className="ProductPrice">{this.props.price}</div>
-      </div>
-    );
-  }
-}
-
-class Section extends React.Component {
-    constructor(props){
-        super(props);
-        this.lastSection = null;
-    }
-    createRows(product){
-
-    }
-  render() {
-    const sections = [];
-    const rows = [];
-    this.props.products.forEach((product, index) => {
-      rows.push(
-        <div key={product.name}>
-          <ProductRow
-            price={product.price}
-            name={product.name}
-            stocked={product.stocked}
-          />
-        </div>
-      );
+    let messages = []; 
+    this.props.messages.forEach(message => {
+      messages.push(<Message text={message.text} time={message.time}/>)
     });
-    return (
-      <div>
-        <div>{rows}</div>
+    return ( 
+      <div className="messageList">
+        {messages}
       </div>
-    );
+     );
   }
 }
 
-const element = <Section products={data} />;
+const element = <div>
+  <MessageList messages={messages} />
+  <Square text="OK"/>
+</div>
 ReactDOM.render(element, document.getElementById("root"));
