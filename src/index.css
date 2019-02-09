@@ -38,13 +38,14 @@
 }
 
 .messageContainer:hover{
-    border: 1px solid rgb(139, 129, 129);
+    background-color: rgb(113, 189, 255);
 }
 
 .messageText{
     margin: auto;
     color: rgb(234, 245, 255);
     word-wrap: break-word;
+    font-weight: 800;
 }
 
 .messageTime{
@@ -60,5 +61,5 @@
     width:fit-content;
     height: fit-content;
     border: 1px solid black;
-    padding: 3px;
+    padding: 5px;
 }
