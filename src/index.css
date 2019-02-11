@@ -45,7 +45,7 @@
     margin: auto;
     color: rgb(234, 245, 255);
     word-wrap: break-word;
-    font-weight: 800;
+    font-weight: 400;
 }
 
 .messageTime{
@@ -58,8 +58,40 @@
 }
 
 .messageList{
-    width:fit-content;
-    height: fit-content;
+    width:100%;
+    margin: 5px;
+    flex:1;
+}
+
+.title{
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.app{
+    background-color: #eeeeee;
     border: 1px solid black;
-    padding: 5px;
+    /* padding: 5px; */
+    width: 500px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    flex:1;
+    font-size: 15px;
+}
+input:focus{
+    outline: none;
+}
+button{
+    /* flex:2; */
+    /* width: 10%; */
+    height: 100%;
+}
+
+.input-container{
+    display: flex;
+    height: 30px;
 }
